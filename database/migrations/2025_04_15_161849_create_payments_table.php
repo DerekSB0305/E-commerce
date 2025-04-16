@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id');
             $table->decimal('amount', 10, 2);
+            $table->timestamp('payment_date');
             $table->string('payment_method');
-            $table->timestamps('payment_date');
+            $table->timestamps();
         });
     }
 
