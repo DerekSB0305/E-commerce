@@ -5,6 +5,16 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Prueba de relaciones
+use App\Models\Order;
+
+Route::get('/test', function () {
+    $order = Order::with(['user', 'orderItems.product', 'payments'])->first();
+    return response()->json($order);
+});
+
+// 
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
